@@ -1,0 +1,21 @@
+.profile__avatar-container {
+  width: 120px;
+  height: 120px;
+  max-width: 100%;
+  position: relative;
+  margin-right: 30px;
+}
+
+.profile__avatar-container:hover .profile__avatar-overlay {
+opacity: 1;
+}
+
+.profile__avatar-overlay:hover .profile__avatar-edit {
+  background-image: url(../../../images/edit-button-vector.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: 26px;
+}

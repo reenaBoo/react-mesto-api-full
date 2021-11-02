@@ -1,0 +1,13 @@
+.footer {
+  width: 80%;
+  max-width: 880px;
+  margin: 0 auto 60px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    width: calc(100% - 38px);
+    margin-bottom: 36px;
+  }
+}

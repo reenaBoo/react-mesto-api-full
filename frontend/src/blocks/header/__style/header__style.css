@@ -1,0 +1,14 @@
+.header__style {
+    font-size: 18px;
+    line-height: 1.22;
+    text-align: right;
+    color: #FFFFFF;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+.header__style:hover {
+    /*opacity: .6;*/
+    cursor: pointer;
+}
+

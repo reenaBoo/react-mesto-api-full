@@ -1,0 +1,35 @@
+.form-auth__input {
+    min-height: 27px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    font-size: 14px;
+    line-height: 1.21;
+    font-weight: 400;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.form-auth .form-auth__input {
+    background-color: transparent;
+    color: #FFFFFF;
+    min-height: 27px;
+    border-bottom: 2px solid #CCCCCC;
+    font-size: 14px;
+    line-height: 1.21;
+    font-weight: 400;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.form-auth .form-auth__input:last-of-type {
+    margin-bottom: 216px;
+}
+
+
+.form-auth__input:last-of-type {
+    margin-top: 30px;
+}
