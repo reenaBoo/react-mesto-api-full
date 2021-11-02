@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 // Слушаем 3000 порт
 const { PORT = 3001 } = process.env;
 
@@ -31,7 +32,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 const options = {
   origin: [
-    'http://localhost:порт',
+    'http://localhost:3000',
     'https://ВАШ ДОМЕЙН С ДОКУМЕНТА',
     'https://reenaBoo.github.io',
   ],
@@ -43,6 +44,8 @@ const options = {
 };
 
 app.use('*', cors(options));
+
+app.use(cookieParser());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

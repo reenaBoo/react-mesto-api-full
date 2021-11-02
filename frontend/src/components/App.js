@@ -41,7 +41,7 @@ function App() {
     api
       .getInitialCards()
       .then((res) => {
-        setCards(res)
+        setCards(res.data)
       })
       .catch((rej) => console.log(rej));
   }, [])
@@ -173,6 +173,7 @@ function App() {
   }
 
   function checkToken(localToken) {
+    console.log(localToken)
     apiAuth
         .checkToken(localToken)
         .then((res) => {

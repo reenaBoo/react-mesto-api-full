@@ -12,8 +12,9 @@ class ApiAuth {
     }
 
     register(dataAuth) {
-        return fetch(`${this._baseUrl}/signup`, {
+        return fetch(`http://localhost:3000/signup`, {
             method: 'POST',
+            credentials: true,
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -22,8 +23,9 @@ class ApiAuth {
     }
 
     login(dataAuth) {
-        return fetch(`${this._baseUrl}/signin`, {
+        return fetch(`http://localhost:3000/signin`, {
             method: 'POST',
+            credentials: true,
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -32,8 +34,9 @@ class ApiAuth {
     }
 
     checkToken(token) {
-        return fetch(`${this._baseUrl}/users/me`, {
+        return fetch(`http://localhost:3000/users/me`, {
             method: 'GET',
+            credentials: true,
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
@@ -43,5 +46,5 @@ class ApiAuth {
 }
 
 export const apiAuth = new ApiAuth({
-    baseUrl: 'https://auth.nomoreparties.co',
+    baseUrl: 'http://localhost:3000',
 })
