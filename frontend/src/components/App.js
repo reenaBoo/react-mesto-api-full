@@ -32,7 +32,7 @@ function App() {
     api
       .getUserInfo()
       .then((profileInfo) => {
-        setCurrentUser(profileInfo)
+        setCurrentUser(profileInfo.data)
       })
       .catch((rej) => console.log(rej))
   }, [])
@@ -89,7 +89,7 @@ function App() {
   function handleUpdateUser(profile) {
     api
       .editUserInfo(profile)
-      .then((newProfile) => {
+      .then(({data: newProfile}) => {
         setCurrentUser(newProfile)
         closeAllPopups()
       })
@@ -99,7 +99,7 @@ function App() {
   function handleUpdateAvatar(avatar) {
     api
       .editUserAvatar(avatar)
-      .then((newProfile) => {
+      .then(({data: newProfile}) => {
         setCurrentUser(newProfile)
         closeAllPopups()
       })
@@ -108,22 +108,23 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
       .changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
-        setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c));
+        setCards((cards) => cards.map((c) => c._id === card._id ? newCard.data : c));
       })
       .catch((rej) => console.log(rej))
   }
 
   function handleAddPlaceSubmit(card) {
+
     api
       .postNewCard(card)
-      .then((newCard) => {
-        setCards([newCard, ...cards])
+      .then(({data})=>{
+        setCards([data, ...cards])
         closeAllPopups()
       })
       .catch((rej) => console.log(rej))
@@ -153,9 +154,8 @@ function App() {
           email,
         })
         .then((res) => {
-          if (res.token) {
-            localStorage.setItem('token', res.token)
-            checkToken(res.token)
+          if (res.message === 'Вход совершен успешно') {
+            checkToken()
           }
         })
         .catch(() => {
@@ -172,10 +172,9 @@ function App() {
     })
   }
 
-  function checkToken(localToken) {
-    console.log(localToken)
+  function checkToken() {
     apiAuth
-        .checkToken(localToken)
+        .checkToken()
         .then((res) => {
           auth(res.data._id, res.data.email)
         })

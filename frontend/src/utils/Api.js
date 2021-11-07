@@ -1,7 +1,7 @@
 class Api {
   constructor(data) {
     this._url = data.url;
-    // this._headers = data.headers;
+    this._headers = data.headers;
   }
 
   _checkStatus(res) {
@@ -12,17 +12,19 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch(`http://localhost:3000/cards`, {
-      // headers: this._headers,
-      method: 'GET'
+    return fetch(`${this._url}/cards`, {
+      headers: this._headers,
+      method: 'GET',
+      credentials: 'include',
     })
       .then(this._checkStatus)
   }
 
   postNewCard(card) {
-    return fetch(`http://localhost:3000/cards`, {
+    return fetch(`${this._url}/cards`, {
       method: 'POST',
-      // headers: this._headers,
+      credentials: 'include',
+      headers: this._headers,
       body: JSON.stringify({
         name: card.name,
         link: card.link
@@ -32,9 +34,10 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`http://localhost:3000/users/me`, {
-      // headers: this._headers,
-      method: 'GET'
+    return fetch(`${this._url}/users/me`, {
+      headers: this._headers,
+      method: 'GET',
+      credentials: 'include',
     })
       .then(this._checkStatus)
   }
@@ -42,7 +45,8 @@ class Api {
   editUserInfo(profile) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
-      // headers: this._headers,
+      credentials: 'include',
+      headers: this._headers,
       body: JSON.stringify({
         name: profile.name,
         about: profile.about
@@ -55,16 +59,18 @@ class Api {
     console.log(avatar)
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
-      // headers: this._headers,
+      credentials: 'include',
+      headers: this._headers,
       body: JSON.stringify(avatar)
     })
       .then(this._checkStatus)
   }
 
   changeLikeCardStatus(cardId, isLiked) {
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: `${isLiked ? 'DELETE' : 'PUT'}`,
-      // headers: this._headers
+      credentials: 'include',
+      headers: this._headers
     })
       .then(this._checkStatus)
   }
@@ -72,16 +78,16 @@ class Api {
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
-      // headers: this._headers
+      credentials: 'include',
+      headers: this._headers
     })
       .then(this._checkStatus)
   }
 }
 
 export const api = new Api({
-  url: 'http://localhost:3001',
-  // headers: {
-  //   authorization: '254abe0c-6cde-4d88-b5b9-683b939cbbc8',
-  //   'Content-Type': 'application/json',
-  // },
+  url: 'https://api.siesta.nomoredomains.icu',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 })

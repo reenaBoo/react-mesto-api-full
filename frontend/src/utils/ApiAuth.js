@@ -12,9 +12,8 @@ class ApiAuth {
     }
 
     register(dataAuth) {
-        return fetch(`http://localhost:3000/signup`, {
+        return fetch(`${this._baseUrl}/signup`, {
             method: 'POST',
-            credentials: true,
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -23,9 +22,9 @@ class ApiAuth {
     }
 
     login(dataAuth) {
-        return fetch(`http://localhost:3000/signin`, {
+        return fetch(`${this._baseUrl}/signin`, {
             method: 'POST',
-            credentials: true,
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -33,18 +32,17 @@ class ApiAuth {
         }).then(this._checkStatus)
     }
 
-    checkToken(token) {
-        return fetch(`http://localhost:3000/users/me`, {
+    checkToken() {
+        return fetch(`${this._baseUrl}/users/me`, {
             method: 'GET',
-            credentials: true,
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
             },
         }).then(this._checkStatus)
     }
 }
 
 export const apiAuth = new ApiAuth({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://api.siesta.nomoredomains.icu',
 })
