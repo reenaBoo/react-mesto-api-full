@@ -12,7 +12,7 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch(`https://api.siesta.nomoredomains.icu/cards`, {
+    return fetch(`${this._url}/cards`, {
       headers: this._headers,
       method: 'GET',
       credentials: 'include',
@@ -21,7 +21,7 @@ class Api {
   }
 
   postNewCard(card) {
-    return fetch(`https://api.siesta.nomoredomains.icu/cards`, {
+    return fetch(`${this._url}/cards`, {
       method: 'POST',
       credentials: 'include',
       headers: this._headers,
@@ -34,7 +34,7 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`https://api.siesta.nomoredomains.icu/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       headers: this._headers,
       method: 'GET',
       credentials: 'include',
@@ -43,7 +43,7 @@ class Api {
   }
 
   editUserInfo(profile) {
-    return fetch(`https://api.siesta.nomoredomains.icu/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
       headers: this._headers,
@@ -57,7 +57,7 @@ class Api {
 
   editUserAvatar(avatar) {
     console.log(avatar)
-    return fetch(`https://api.siesta.nomoredomains.icu/users/me/avatar`, {
+    return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
       headers: this._headers,
@@ -67,7 +67,7 @@ class Api {
   }
 
   changeLikeCardStatus(cardId, isLiked) {
-    return fetch(`https://api.siesta.nomoredomains.icu/cards/${cardId}/likes`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: `${isLiked ? 'DELETE' : 'PUT'}`,
       credentials: 'include',
       headers: this._headers
@@ -76,7 +76,7 @@ class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`https://api.siesta.nomoredomains.icu/cards/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: this._headers
