@@ -12,7 +12,7 @@ class ApiAuth {
     }
 
     register(dataAuth) {
-        return fetch(`${this._baseUrl}/signup`, {
+        return fetch(`https://api.siesta.nomoredomains.icu/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ class ApiAuth {
     }
 
     login(dataAuth) {
-        return fetch(`${this._baseUrl}/signin`, {
+        return fetch(`https://api.siesta.nomoredomains.icu/signin`, {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -33,7 +33,7 @@ class ApiAuth {
     }
 
     checkToken() {
-        return fetch(`${this._baseUrl}/users/me`, {
+        return fetch(`https://api.siesta.nomoredomains.icu/users/me`, {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -44,5 +44,6 @@ class ApiAuth {
 }
 
 export const apiAuth = new ApiAuth({
-    baseUrl: 'https://api.siesta.nomoredomains.icu',
+    // baseUrl: 'https://api.siesta.nomoredomains.icu',
+    baseUrl: 'http://localhost:3001',
 })

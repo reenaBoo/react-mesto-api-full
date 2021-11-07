@@ -12,7 +12,7 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._url}/cards`, {
+    return fetch(`https://api.siesta.nomoredomains.icu/cards`, {
       headers: this._headers,
       method: 'GET',
       credentials: 'include',
@@ -21,7 +21,7 @@ class Api {
   }
 
   postNewCard(card) {
-    return fetch(`${this._url}/cards`, {
+    return fetch(`https://api.siesta.nomoredomains.icu/cards`, {
       method: 'POST',
       credentials: 'include',
       headers: this._headers,
@@ -34,7 +34,7 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`https://api.siesta.nomoredomains.icu/users/me`, {
       headers: this._headers,
       method: 'GET',
       credentials: 'include',
@@ -43,7 +43,7 @@ class Api {
   }
 
   editUserInfo(profile) {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`https://api.siesta.nomoredomains.icu/users/me`, {
       method: 'PATCH',
       credentials: 'include',
       headers: this._headers,
@@ -57,7 +57,7 @@ class Api {
 
   editUserAvatar(avatar) {
     console.log(avatar)
-    return fetch(`${this._url}/users/me/avatar`, {
+    return fetch(`https://api.siesta.nomoredomains.icu/users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
       headers: this._headers,
@@ -67,7 +67,7 @@ class Api {
   }
 
   changeLikeCardStatus(cardId, isLiked) {
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
+    return fetch(`https://api.siesta.nomoredomains.icu/cards/${cardId}/likes`, {
       method: `${isLiked ? 'DELETE' : 'PUT'}`,
       credentials: 'include',
       headers: this._headers
@@ -76,7 +76,7 @@ class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._url}/cards/${cardId}`, {
+    return fetch(`https://api.siesta.nomoredomains.icu/cards/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: this._headers
@@ -86,7 +86,8 @@ class Api {
 }
 
 export const api = new Api({
-  url: 'https://api.siesta.nomoredomains.icu',
+  url: 'http://localhost:3001',
+  // url: 'https://api.siesta.nomoredomains.icu',
   headers: {
     'Content-Type': 'application/json',
   },
