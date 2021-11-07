@@ -34,6 +34,7 @@ const options = {
   origin: [
     'http://localhost:3000',
     'https://siesta.nomoredomains.icu',
+    'http://siesta.nomoredomains.icu',
     'https://reenaBoo.github.io',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
