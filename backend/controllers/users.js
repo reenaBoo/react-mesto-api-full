@@ -172,7 +172,12 @@ module.exports.login = (req, res, next) => {
           // аутентификация успешна
           return res
             // отправляем jwt в cookie для защиты от XSS-атаки.
-            .cookie('jwt', token, { maxAge: 3600000 * 24 * 7, httpOnly: true })
+            .cookie('jwt', token, {
+              maxAge: 3600000 * 24 * 7,
+              httpOnly: true,
+              secure: true,
+              sameSite: 'none',
+            })
             .send({ message: 'Вход совершен успешно' });
         })
         .catch(next);
