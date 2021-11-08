@@ -44,6 +44,6 @@ class ApiAuth {
 }
 
 export const apiAuth = new ApiAuth({
-    // baseUrl: 'https://api.siesta.nomoredomains.icu',
-    baseUrl: 'http://localhost:3001',
+    baseUrl: 'https://api.siesta.nomoredomains.icu',
+    // baseUrl: 'http://localhost:3001',
 })
