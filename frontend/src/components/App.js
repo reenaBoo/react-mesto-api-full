@@ -179,7 +179,8 @@ function App() {
           auth(res.data._id, res.data.email)
         })
         .catch((err) => {
-          console.log(err)
+          setLoggedIn(false);
+          console.log(err);
         })
   }
 
@@ -189,8 +190,8 @@ function App() {
 
   // ПРОВЕРКА ПОЛЬЗОВАТЕЛЯ ПРИ ВХОДЕ
   useEffect(() => {
-    const localToken = localStorage.getItem('token')
-    localToken ? checkToken(localToken) : history.push('/sign-in')
+    checkToken();
+    loggedIn ? history.push('/') : history.push('/sign-in')
   }, [])
 
   // ВЫХОД ПОЛЬЗОВАТЕЛЯ
