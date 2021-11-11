@@ -67,8 +67,7 @@ app.post('/signup', celebrate({
         .required()
         .email(),
       password: Joi.string()
-        .required()
-        .min(8),
+        .required(),
       name: Joi.string()
         .min(2)
         .max(30),
@@ -87,8 +86,7 @@ app.post('/signin', celebrate({
         .required()
         .email(),
       password: Joi.string()
-        .required()
-        .min(8),
+        .required(),
     }),
 }), login);
 
