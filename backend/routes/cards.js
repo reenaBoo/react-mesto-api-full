@@ -53,6 +53,7 @@ router.put('/cards/:cardId/likes', celebrate({
         .hex(),
     }),
 }), likeCard);
+
 router.delete('/cards/:cardId/likes', celebrate({
   // валидируем параметры
   params: Joi.object()

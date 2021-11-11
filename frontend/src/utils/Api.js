@@ -86,8 +86,8 @@ class Api {
 }
 
 export const api = new Api({
-  // url: 'http://localhost:3001',
-  url: 'https://api.siesta.nomoredomains.icu',
+  url: 'http://localhost:3001',
+  // url: 'https://api.siesta.nomoredomains.icu',
   headers: {
     'Content-Type': 'application/json',
   },
